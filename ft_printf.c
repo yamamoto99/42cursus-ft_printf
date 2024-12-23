@@ -6,7 +6,7 @@
 /*   By: masayama <masayama@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 13:33:40 by masayama          #+#    #+#             */
-/*   Updated: 2024/12/23 22:31:03 by masayama         ###   ########.fr       */
+/*   Updated: 2024/12/24 02:35:46 by masayama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,15 @@ void	ft_check_fmt(char fmt, va_list args, int *res)
 		*res += ft_putstr(va_arg(args, char *));
 	else if (fmt == 'd' || fmt == 'i')
 		*res += ft_putnbr(va_arg(args, int));
-	// else if (fmt == 'p')
-	// else if (fmt == 'u')
-	// else if (fmt == 'x')
-	// else if (fmt == 'X')
+	else if (fmt == 'p')
+		*res += ft_putstr("0x") + ft_putbase(va_arg(args, unsigned long long),
+				"0123456789abcdef");
+	else if (fmt == 'u')
+		*res += ft_putbase(va_arg(args, unsigned int), "0123456789");
+	else if (fmt == 'x')
+		*res += ft_putbase(va_arg(args, unsigned int), "0123456789abcdef");
+	else if (fmt == 'X')
+		*res += ft_putbase(va_arg(args, unsigned int), "0123456789ABCDEF");
 	else if (fmt == '%')
 		*res += ft_putchar('%');
 }
@@ -64,12 +69,62 @@ int	ft_printf(const char *format, ...)
 }
 
 // #include <stdio.h>
-// int main(void)
+
+// int	main(void)
 // {
-// 	int a = ft_printf("%s\n", "dsd");
-// 	printf("%i\n", a);
-// 	int b = ft_printf("%c\n", 'c');
-// 	printf("%i\n", b);
-// 	int c = ft_printf("%i\n", -2147483647);
-// 	printf("%i\n", c);
+// 	int num1 = ft_printf("ft_print : char         >> %c              ", 'a');
+// 	printf("<< %d\n", num1);
+// 	int num2 = printf("original : char         >> %c              ", 'a');
+// 	printf("<< %d\n", num2);
+// 	printf("\n");
+
+// 	int num3 = ft_printf("ft_print : string       >> %s          ", "hello");
+// 	printf("<< %d\n", num3);
+// 	int num4 = printf("original : string       >> %s          ", "hello");
+// 	printf("<< %d\n", num4);
+// 	printf("\n");
+
+// 	int num5 = ft_printf("ft_print : int          >> %d             ", 42);
+// 	printf("<< %d\n", num5);
+// 	int num6 = printf("original : int          >> %d             ", 42);
+// 	printf("<< %d\n", num6);
+// 	printf("\n");
+
+// 	int num7 = ft_printf("ft_print : int          >> %i            ", -42);
+// 	printf("<< %d\n", num7);
+// 	int num8 = printf("original : int          >> %i            ", -42);
+// 	printf("<< %d\n", num8);
+// 	printf("\n");
+
+// 	int num9 = 1;
+// 	int *p_num9 = &num9;
+// 	int num10 = ft_printf("ft_print : pointer      >> %p    ", p_num9);
+// 	printf("<< %d\n", num10);
+// 	int num11 = printf("original : pointer      >> %p    ", p_num9);
+// 	printf("<< %d\n", num11);
+// 	printf("\n");
+
+// 	int num12 = ft_printf("ft_print : unsigned int >> %u             ", 42);
+// 	printf("<< %d\n", num12);
+// 	int num13 = printf("original : unsigned int >> %u             ", 42);
+// 	printf("<< %d\n", num13);
+// 	printf("\n");
+
+// 	int num14 = ft_printf("ft_print : hex          >> %x       ", -1);
+// 	printf("<< %d\n", num14);
+// 	int num15 = printf("original : hex          >> %x       ", -1);
+// 	printf("<< %d\n", num15);
+// 	printf("\n");
+
+// 	int num16 = ft_printf("ft_print : HEX          >> %X             ", 42);
+// 	printf("<< %d\n", num16);
+// 	int num17 = printf("original : HEX          >> %X             ", 42);
+// 	printf("<< %d\n", num17);
+// 	printf("\n");
+
+// 	int num18 = ft_printf("ft_print : percent      >> %%              ");
+// 	printf("<< %d\n", num18);
+// 	int num19 = printf("original : percent      >> %%              ");
+// 	printf("<< %d\n", num19);
+// 	printf("\n");
 // }
