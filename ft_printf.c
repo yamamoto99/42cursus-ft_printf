@@ -6,34 +6,34 @@
 /*   By: masayama <masayama@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 13:33:40 by masayama          #+#    #+#             */
-/*   Updated: 2024/12/24 02:35:46 by masayama         ###   ########.fr       */
+/*   Updated: 2025/01/24 23:45:39 by masayama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_check_fmt(char fmt, va_list args, int *res)
+void	ft_check_fmt(char fmt, va_list *args, int *res)
 {
 	if (fmt == 'c')
-		*res += ft_putchar(va_arg(args, int));
+		*res += ft_putchar(va_arg(*args, int));
 	else if (fmt == 's')
-		*res += ft_putstr(va_arg(args, char *));
+		*res += ft_putstr(va_arg(*args, char *));
 	else if (fmt == 'd' || fmt == 'i')
-		*res += ft_putnbr(va_arg(args, int));
+		*res += ft_putnbr(va_arg(*args, int));
 	else if (fmt == 'p')
-		*res += ft_putstr("0x") + ft_putbase(va_arg(args, unsigned long long),
+		*res += ft_putstr("0x") + ft_putbase(va_arg(*args, unsigned long long),
 				"0123456789abcdef");
 	else if (fmt == 'u')
-		*res += ft_putbase(va_arg(args, unsigned int), "0123456789");
+		*res += ft_putbase(va_arg(*args, unsigned int), "0123456789");
 	else if (fmt == 'x')
-		*res += ft_putbase(va_arg(args, unsigned int), "0123456789abcdef");
+		*res += ft_putbase(va_arg(*args, unsigned int), "0123456789abcdef");
 	else if (fmt == 'X')
-		*res += ft_putbase(va_arg(args, unsigned int), "0123456789ABCDEF");
+		*res += ft_putbase(va_arg(*args, unsigned int), "0123456789ABCDEF");
 	else if (fmt == '%')
 		*res += ft_putchar('%');
 }
 
-int	printf_helper(const char *format, va_list args)
+int	printf_helper(const char *format, va_list *args)
 {
 	int	res;
 
@@ -63,10 +63,18 @@ int	ft_printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 	va_start(args, format);
-	ans = printf_helper(format, args);
+	ans = printf_helper(format, &args);
 	va_end(args);
 	return (ans);
 }
+
+// # include <stdio.h>
+
+// int main(void)
+// {
+// 	// printf("%c\n", '1');
+// 	ft_printf("%s %s\n", "aaa", "bbb");
+// }
 
 // #include <stdio.h>
 

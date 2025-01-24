@@ -6,7 +6,7 @@
 /*   By: masayama <masayama@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 02:04:18 by masayama          #+#    #+#             */
-/*   Updated: 2024/12/24 02:35:24 by masayama         ###   ########.fr       */
+/*   Updated: 2025/01/24 23:46:06 by masayama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	ft_putstr(char *str)
 	int	i;
 
 	i = 0;
+	if (str == NULL)
+		return ft_putstr("(null)");
 	while (str[i] != 0)
 		ft_putchar(str[i++]);
 	return (i);
