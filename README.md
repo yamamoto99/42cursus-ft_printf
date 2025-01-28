@@ -1,4 +1,4 @@
-<h1 align="center" style="font-size: 35px;">
+<h1 align="center" style="font-size: 60px;">
  42Cursus ft_printf
 </h1>
 
