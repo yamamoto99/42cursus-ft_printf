@@ -1,4 +1,4 @@
-<h1 align="center" style="font-size: 60px;">
+<h1 align="center">
  42Cursus ft_printf
 </h1>
 
@@ -6,7 +6,7 @@
   <img src="ft_printfe.png" />
 </p>
 
-<h2 align="center" style="font-size: 30px;">
+<h2 align="center">
   Key Points
 </h2>
 
