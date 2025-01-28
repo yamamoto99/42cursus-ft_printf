@@ -6,9 +6,8 @@
   <img src="ft_printfe.png" />
 </p>
 
-<h2 align="center">
-  Key Points
-</h2>
+# Key Points
+
 
 ## 可変長引数
 通常の関数宣言では引数は型一致した一つの値しか受け取ることができない</br>
