@@ -6,7 +6,7 @@
 /*   By: masayama <masayama@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 13:33:40 by masayama          #+#    #+#             */
-/*   Updated: 2025/01/28 23:49:12 by masayama         ###   ########.fr       */
+/*   Updated: 2025/01/29 01:17:24 by masayama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 static int	handle_pointer(va_list *args)
 {
-	return (ft_putstr("0x") + ft_putbase(va_arg(*args, unsigned long long),
-			HEX_LOWER));
+	unsigned long long	ptr;
+
+	ptr = va_arg(*args, unsigned long long);
+	if (ptr == 0)
+		return (ft_putstr("(nil)"));
+	return (ft_putstr("0x") + ft_putbase(ptr, HEX_LOWER));
 }
 
 void	ft_check_fmt(char fmt, va_list *args, int *res)
